@@ -74,14 +74,29 @@
           let payload1 = {
             num: this.num1,
           }
+          // #region
+          // axios({
+          //   method: "post",
+          //   // xsrfHeaderName:'X-XSRF-TOKEN',
+          //   headers: {
+          //     'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8',
+          //     'X-CSRFToken': csrf_token,
+          //   },
+          //   data: qs.stringify(payload1),  //发送post请求，使用data关键字接收请求参数
+          //   url: "http://localhost:8000/testreq/id"
+          // }).then(res => {
+          //   this.info = res.data
+          //   console.log(res)
+          // })
+          // #endregion
           axios({
             method: "post",
             // xsrfHeaderName:'X-XSRF-TOKEN',
             headers: {
-              'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8',
+              'Content-Type':'application/json',
               'X-CSRFToken': csrf_token,
             },
-            data: qs.stringify(payload1),  //发送post请求，使用data关键字接收请求参数
+            data: payload1,  //也可以使用 JSON.stringify(payload1)
             url: "http://localhost:8000/testreq/id"
           }).then(res => {
             this.info = res.data
